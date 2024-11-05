@@ -1,0 +1,112 @@
+{
+	"name": "node-starter",
+	"version": "0.0.1",
+	"author": "",
+	"type":"commonjs",
+	"license": "MIT",
+	"description": "",
+	"main": "backend.js",
+	"keywords": [],
+	"scripts": {
+		"start": "node backend.js",
+		"dev": "gulp dev",
+		"build": "gulp build",
+		"check": "ncu -u",
+		"test": "jest",
+		"copyFiles": "copy-files-from-to"
+	},
+	"scripts-description": {
+		"dev": [
+			"Wtarts watching for edits to the SCSS and JS files within src/scss and src/js.",
+			"Will start the server to be accessible via the browser. so you can watch the live updates."
+		],
+		"build": "Combines and minifies the SCSS and JS files.",
+		"start": "Starts the server to be accessible via the browser",
+		"copyFiles": [
+			"copies files from node-modules to corisponding paths",
+			"requires copy-files-from-to to be installed globally (or at least thats how I installed it)",
+			"@source: https://www.npmjs.com/package/copy-files-from-to"
+		],
+		"check": "checks for npm updates",
+		"test": "I need help getting this to work correctly..."
+	},
+	"dependencies": {
+		"node-json-db": "^2.3.0"
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.14",
+		"@skem9/dselect": "^1.1",
+		"@tkrotoff/bootstrap-floating-label": "^0.12",
+		"autoprefixer": "^10.4",
+		"bootstrap": "^5.3",
+		"bootstrap-icons": "^1.11",
+		"browser-sync": "^3.0",
+		"cssnano": "^7.0",
+		"dotenv": "^16.4",
+		"ejs": "^3.1",
+		"esbuild": "^0.24.0",
+		"eslint": "^9.14.0",
+		"express": "^4.21",
+		"fs-extra": "^11.2",
+		"globals": "^15.12",
+		"gulp": "^5.0",
+		"gulp-concat": "^2.6",
+		"gulp-postcss": "^10.0",
+		"gulp-rename": "^2.0",
+		"gulp-sass": "^5.1",
+		"jest": "^29.7",
+		"npm-check-updates": "^17.1",
+		"postcss": "^8.4",
+		"postcss-cli": "^11.0",
+		"sass": "^1.80",
+		"through2": "^4.0"
+	},
+	"browserslist": [
+		"last 2 versions",
+		"> 1%",
+		"IE 11"
+	],
+	"copyFiles": [
+		{
+			"from": "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+			"to": "www/assets/js/bootstrap.bundle.min.js"
+		},
+		{
+			"from": "node_modules/bootstrap-icons/font/fonts/*",
+			"to": "www/assets/fonts"
+		},
+		{
+			"from": "node_modules/@skem9/dselect/dist/js/dselect.js",
+			"to": "src/js/plugin/dselect.js"
+		},
+		{
+			"from": "node_modules/@skem9/dselect/source/css/dselect.scss",
+			"to": "src/scss/plugin/_dselect.scss"
+		}
+	],
+	"copyFilesSettings": {
+		"whenFileExists": "notify-about-available-change",
+		"addReferenceToSourceOfOrigin": true,
+		"ignoreDotFilesAndFolders": true,
+		"removeSourceMappingURL": true,
+		"minifyJs": false,
+		"minifyJsTerserOptions": {
+			"compress": {
+				"sequences": false
+			},
+			"mangle": false,
+			"format": {
+				"semicolons": false
+			}
+		}
+	},
+	"yohn-edits": {
+		"took out of the copy func": [
+			{
+				"from": "node_modules/@skem9/dselect/dist/js/dselect.min.js",
+				"to": "src/js/plugin/dselect.min.js",
+				"reason": "let esbuild minimize the main file."
+			}
+		]
+	}
+}
